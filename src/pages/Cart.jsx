@@ -1,43 +1,38 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { CardItem } from '../components'
-import {clearCart, removeCartItems, plusCartItem, minusCartItem} from '../redux/actions/card'
-import cartEmptyImage from '../assetc/img/empty-cart.png'
-import Button from './../components/Button'; 
+import { CardItem } from '../components';
+import { clearCart, removeCartItems, plusCartItem, minusCartItem } from '../redux/actions/card';
+import cartEmptyImage from '../assetc/img/empty-cart.png';
+import Button from './../components/Button';
 
 function Cart() {
-    const dispatch = useDispatch();
-    const {totalCount, totalPrice, items} = useSelector(({card}) => card)
-    const addedPizzas = Object.keys(items).map((key) => {
-        return items[key].item[0];
-      });
-    
+  const dispatch = useDispatch();
+  const { totalCount, totalPrice, items } = useSelector(({ card }) => card);
+  const addedPizzas = Object.keys(items).map((key) => {
+    return items[key].item[0];
+  });
 
-    const onClearCart = () =>{
-        if(window.confirm("Вы действительно хотите удалить весь заказ?"))
-            dispatch(clearCart());
-    }
+  const onClearCart = () => {
+    if (window.confirm('Вы действительно хотите удалить весь заказ?')) dispatch(clearCart());
+  };
 
-    
-    const onRemoveCartItems = (id) =>{
-        if(window.confirm("Вы действительно хотите удалить вcе пиццы?"))
-            dispatch(removeCartItems(id));
-    }
+  const onRemoveCartItems = (id) => {
+    if (window.confirm('Вы действительно хотите удалить вcе пиццы?')) dispatch(removeCartItems(id));
+  };
 
-    const onMinusCartItem = (id) => {
-        dispatch(minusCartItem(id))
-    }
-    const onPlusCartItem = (id) => {
-        dispatch(plusCartItem(id))
-    }
+  const onMinusCartItem = (id) => {
+    dispatch(minusCartItem(id));
+  };
+  const onPlusCartItem = (id) => {
+    dispatch(plusCartItem(id));
+  };
 
-    const onPayItems = () =>{
-      window.alert("js ГОВНО")
-    }
+  const onPayItems = () => {
+    window.alert('Заказ принят');
+  };
 
-    
   return (
     <div className="container container--cart">
       {totalCount ? (
@@ -115,22 +110,20 @@ function Cart() {
             </div>
           </div>
           <div className="content__items">
-          {addedPizzas.map((obj) => (
-            <CardItem
-                key ={obj.id}
-                id = {obj.id}
-                name = {obj.name}
-                type = {obj.type}
-                size = {obj.size}
-                price = {items[obj.id].totalPrice} 
-                count = {items[obj.id].item.length}
-                onRemove = {onRemoveCartItems}
-                onPlus = {onMinusCartItem}
-                onMinus = {onPlusCartItem}
-
-            />
-            
-        ))}
+            {addedPizzas.map((obj) => (
+              <CardItem
+                key={obj.id}
+                id={obj.id}
+                name={obj.name}
+                type={obj.type}
+                size={obj.size}
+                price={items[obj.id].totalPrice}
+                count={items[obj.id].item.length}
+                onRemove={onRemoveCartItems}
+                onPlus={onMinusCartItem}
+                onMinus={onPlusCartItem}
+              />
+            ))}
           </div>
           <div className="cart__bottom">
             <div className="cart__bottom-details">
@@ -187,4 +180,4 @@ function Cart() {
   );
 }
 
-export default Cart
+export default Cart;
