@@ -18,7 +18,8 @@
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "json-server": "npx json-server --watch public/db.json --port=3001"
   },
   "proxy": "http://localhost:3001",
   "scripts": {
@@ -26,8 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node server.js",
-    "json-server": "npx json-server --watch public/db.json --port=3001"
+    "server": "node server.js"
   },
   "eslintConfig": {
     "extends": [
