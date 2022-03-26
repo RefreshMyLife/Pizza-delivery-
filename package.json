@@ -28,7 +28,8 @@
     "start": "npx run concurrently \"react-scripts start\"\"json-server -p 3001 -w public/db.json\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server.js"
   },
   "devDependencies": {
     "concurrently": "^7.0.0",
